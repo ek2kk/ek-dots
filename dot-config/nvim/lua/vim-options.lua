@@ -1,9 +1,7 @@
 local opt = vim.opt
 local keymap = vim.keymap
 
-vim.opt.termguicolors = true
-
--- vim.cmd("colorscheme cyberdream")
+opt.termguicolors = true
 
 -- line numeration
 opt.relativenumber = true
@@ -49,3 +47,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		require("conform").format({ bufnr = args.buf })
 	end,
 })
+
+-- vim.cmd([[colorscheme tokyonight-night]])

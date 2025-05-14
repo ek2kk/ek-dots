@@ -32,6 +32,7 @@ return {
 			autotag = {
 				enable = true,
 			},
+			diagnostics = { disable = { "missing-fields" } },
 		})
 	end,
 }

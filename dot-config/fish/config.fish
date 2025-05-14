@@ -1,12 +1,14 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    #eval (zellij setup --generate-auto-start fish | string collect)
 end
+
 
 alias pac="sudo pacman"
 alias vim="nvim"
 alias wlogout="wlogout --buttons-per-row 2"
 alias cuvpn="netbird up --management-url https://vpn.labs.centraluniversity.ru:33073"
-alias ls='eza --color=always --long --git --icons=always'
+alias ls='eza --color=always --long --git --icons=always --group-directories-first'
 alias ssh='kitty +kitten ssh'
 alias mambavpn='nmcli connection up mambavpn'
 alias gpu2hw='kitty +kitten ssh ekuznetsov@gpu2.hw.lan'
@@ -30,3 +32,6 @@ end
 
 # Set up fzf key bindings
 fzf --fish | source
+
+
+

@@ -3,9 +3,9 @@ return {
 	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
-			python = { "isort", "black" },
+			python = { "ruff_organize_imports", "ruff_format" },
 			css = { "prettier" },
-			["*"] = { "codespell" },
+			-- ["*"] = { "codespell" },
 
 			format_on_save = {
 				lsp_format = "fallback",

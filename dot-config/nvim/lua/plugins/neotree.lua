@@ -7,6 +7,9 @@ return {
 		"MunifTanjim/nui.nvim",
 		-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 	},
+	lazy = false,
+	---@module "neo-tree"
+	---@type neotree.Config?
 	opts = {
 		sources = { "filesystem", "buffers", "git_status", "document_symbols" },
 		filesystem = {
@@ -30,10 +33,14 @@ return {
 					renamed = "󰁕",
 					-- Status type
 					untracked = "",
-					ignored = "",
-					unstaged = "󰄱",
-					staged = "",
-					conflict = "",
+					-- ignored = "",
+					-- unstaged = "󰄱",
+					-- staged = "",
+					-- conflict = "",
+					ignored = "I",
+					unstaged = "U",
+					staged = "S",
+					conflict = "C",
 				},
 			},
 		},

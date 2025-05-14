@@ -27,10 +27,9 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		opts = {
 			ensure_installed = {
-				"black",
-				"isort",
 				"stylua",
 				"pylint",
+				"ruff",
 			},
 		},
 	},
