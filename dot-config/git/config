@@ -1,0 +1,7 @@
+[user]
+    name = Egor Kuznetsov
+    email = ek2kkk@yandex.ru
+
+[core]
+    compression = 9
+    preloadindex = true

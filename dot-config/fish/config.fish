@@ -13,6 +13,14 @@ alias ssh='kitty +kitten ssh'
 alias mambavpn='nmcli connection up mambavpn'
 alias gpu2hw='kitty +kitten ssh ekuznetsov@gpu2.hw.lan'
 alias gpu4hw='kitty +kitten ssh ekuznetsov@gpu4.hw.lan'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gu='git pull'
+alias gi='git init'
+alias gcl='git clone'
+alias gst='git status'
+
 
 
 starship init fish | source
