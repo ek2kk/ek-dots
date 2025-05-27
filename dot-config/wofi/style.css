@@ -1,9 +1,7 @@
-@import url('/home/ek/.cache/wal/colors-waybar.css');
-
-@define-color mauve    @color9;
-@define-color red      @color9;
-@define-color lavender @color7;
 @define-color text     @color7;
+@define-color foreground #d0d0d1;
+@define-color background #1e1e1e;
+@define-color red #bb8284;
 
 * {
     all: unset;
@@ -18,7 +16,7 @@
 window {
     padding: 20px;
     border-radius: 0px;
-    background-color: alpha(@background, 0.5);
+    background-color: alpha(@background, 0.7);
 }
 
 #outer-box,
@@ -33,14 +31,14 @@ window {
 }
 
 #scroll {
-    padding: 30px;
+    padding: 10px;
     margin: 0;
 }
 
 #input {
     margin: 20px;
     padding: 20px;
-    color: @text;
+    color: @foreground;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     background-color: alpha(@background, 0.2);
@@ -60,7 +58,7 @@ window {
 
 #text {
     margin: 5px;
-    color: @text;
+    color: @foreground;
     border: none;
     outline: none;
 }
@@ -72,20 +70,20 @@ window {
 }
 
 #entry arrow {
-    color: @lavender;
+    color: @foreground;
     border: none;
 }
 
 #entry:selected {
     border-radius: 20px;
-    background-color: transparent;
+    background-color: @foreground;
     box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.03);
 }
 
 #entry:selected #text {
-    color: @mauve;
+    color: @background;
 }
 
 #entry:drop(active) {
-    background-color: @lavender !important;
+    background-color: @red !important;
 }

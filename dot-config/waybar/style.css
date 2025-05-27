@@ -1,5 +1,14 @@
 @import url("/home/ek/.cache/wal/colors-waybar.css");
 
+@define-color background #3e3e3e; /* color8 */
+@define-color foreground #b5b5b6; /* color7 */
+@define-color workspace-empty #1e1e1e; /* color0 */
+@define-color workspace-active #d0d0d1; /* color15 */
+@define-color workspace-inactive #b5b5b6;
+@define-color green #87a384;
+@define-color yellow #d4b47d;
+@define-color red #bb8284;
+@define-color blue #3a70cf;
 * {
   font-size: 15px;
   font-family: "MesloLGS Nerd Font";
@@ -25,7 +34,7 @@ window#waybar {
 
 .modules-center {
   margin: 10px 0 5px 0;
-  min-width: 150.1px;
+  min-width: 120px;
 }
 
 .modules-right {
@@ -34,7 +43,7 @@ window#waybar {
 
 tooltip {
   background: @background;
-  color: @color7;
+  color: @foreground;
 }
 
 #clock,
@@ -50,7 +59,7 @@ tooltip {
 #group-expand,
 #custom-expand {
   padding: 0 5px;
-  color: @color7;
+  color: @foreground;
   transition: all 0.3s ease;
 }
 
@@ -60,13 +69,13 @@ tooltip {
 }
 
 #custom-expand {
-  color: alpha(@foreground, 0.2);
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+  color: alpha(@foreground, 1.0);
+  text-shadow: none;
 }
 
 #custom-expand:hover {
-  color: rgba(255, 255, 255, 0.2);
-  text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 1.0);
+  text-shadow: none;
 }
 
 #custom-colorpicker {
@@ -74,7 +83,7 @@ tooltip {
 }
 
 #custom-endpoint {
-  color: transparent;
+  color: @blue;
   text-shadow: 0 0 1.5px rgba(0, 0, 0, 1);
 }
 
@@ -87,19 +96,19 @@ tooltip {
 #cpu:hover,
 #memory:hover,
 #temperature:hover {
-  color: @color1;
+  color: white;
 }
 
 #battery.charging {
-  color: #26a65b;
+  color: #87a384;
 }
 
 #battery.warning:not(.charging) {
-  color: #ffbe61;
+  color: #d4b47d;
 }
 
 #battery.critical:not(.charging) {
-  color: #f53c3c;
+  color: #bb8284;
   animation: blink 0.5s linear infinite alternate;
 }
 
@@ -112,44 +121,42 @@ tooltip {
   all: unset;
   margin: 0 3px;
   padding: 0 2px;
-  background: @color2;
-  color: rgba(0, 0, 0, 0);
+  background: alpha(@workspace-inactive, 0.5);
+  color: transparent; 
   border-radius: 50%;
   min-width: 15px;
   transition: all 0.3s;
 }
 
 #workspaces button:hover {
-  background: @color1;
+  background: alpha(@workspace-inactive, 1.0);
 }
 
 #workspaces button.active {
-  background: @color1;
-  border-radius: 10px;
-  min-width: 30px;
+  background: alpha(@workspace-active, 0.8);
 }
 
 #workspaces button.active:hover {
-  background: @color2;
+  background: alpha(@workspace-active, 1.0);
 }
 
 #workspaces button.empty {
-  background: alpha(@background, 0.5);
+  background: alpha(@workspace-empty, 0.5);
   border: none;
-  color: transparent;
 }
 
 #workspaces button.empty:hover {
-  text-shadow: 0 0 1.5px rgba(0, 0, 0, 0.5);
+  background: alpha(@workspace-empty, 1.0);
+  text-shadow: none;
 }
 
 #workspaces button.empty.active {
-  background: @color1;
+  background: alpha(@red, 0.5);
   text-shadow: none;
 }
 
 #workspaces button.empty.active:hover {
-  background: @color2;
+  background: alpha(@red, 1.0);
 }
 
 #tray menu *,

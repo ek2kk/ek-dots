@@ -1,10 +1,10 @@
 format = """ 
 \
-[](fg:blue)\
+[](fg:white)\
 $os\
-[](bg:blue fg:red)\
+[](bg:white fg:blue)\
 $username\
-[](bg:red fg:green)\
+[](bg:blue fg:green)\
 $directory\
 [ ](fg:green)\
 $git_branch\
@@ -14,12 +14,12 @@ $character"""
 
 [username]
 show_always = true
-format = '[$user ](bg:red fg:black)'
+format = '[$user ](bg:blue fg:white)'
 disabled = false
 
 [os]
 disabled = false
-style = 'bg:blue fg:black'
+style = 'bg:white fg:blue'
 [os.symbols]
 Alpaquita = " "
 Alpine = " "
