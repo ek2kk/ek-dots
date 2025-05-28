@@ -45,7 +45,7 @@ window {
 }
 
 #input image {
-    color: @red;
+    color: @foreground;
     padding-right: 10px;
 }
 
