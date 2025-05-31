@@ -1,70 +1,128 @@
-@define-color background #3e3e3e; /* color8 */
-@define-color foreground #b5b5b6; /* color7 */
-@define-color workspace-empty #1e1e1e; /* color0 */
-@define-color workspace-active #d0d0d1; /* color15 */
-@define-color workspace-inactive #b5b5b6;
-@define-color green #87a384;
-@define-color yellow #d4b47d;
-@define-color red #bb8284;
-@define-color blue #3a70cf;
+@define-color bar_bg          rgba(20, 20, 20, 0.85);  /* Фон статусной строки (полупрозрачный) */
+@define-color icon_color      #b5b5b6;                 /* Основной цвет иконок (color7) */
+@define-color icon_hover      #d0d0d1;                 /* Иконки при наведении (color15) */
 
+/* Активные */
+@define-color ws_active       #4a5d7a;                 /* Непустое активное (muted_blue) */
+@define-color ws_active_empty #3a4a65;                 /* Пустое активное (muted_blue_dark) */
+
+/* Неактивные */
+@define-color ws_inactive     rgba(70, 80, 90, 0.5);   /* Непустое неактивное (серо-синий) */
+@define-color ws_inactive_empty rgba(30, 30, 30, 0.3); /* Пустое неактивное (color0 + прозрачность) */
+
+/* Hover-состояния */
+@define-color ws_active_hover     #5a75a0;             /* Яркий синий (muted_blue_light) */
+@define-color ws_inactive_hover  rgba(90, 100, 120, 0.7); 
+@define-color ws_empty_hover     rgba(60, 70, 80, 0.4);
+
+/* Батарея */
+@define-color battery_charged    #6d8a6a;   /* Заряжена (color2) */
+@define-color battery_charging  #5d8b96;   /* Зарядка (color6 - бирюзовый) */
+@define-color battery_medium    #c09a5f;   /* Средний заряд (color3 - жёлтый) */
+@define-color battery_low       #a06567;   /* Низкий заряд (color1 - красный) */
 #waybar {
-  background: @background;
-  color: @foreground;
-  font-family: "MesloLGS Nerd Font";
-  font-size: 14px;
+    background: @bar_bg;
+    color: @icon_color;
+    font-family: "MesloLGS Nerd Font";
+    font-weight: 700;
+    font-size: 15px;
 }
 
-/* padding */
+.modules-left {
+    margin: 0 8px 0 12px;  /* Слева больше места для визуального разделения */
+    padding: 0 6px;
+}
+.modules-center {
+    margin: 0;
+    padding: 0 4px;        /* Центр компактный, но с небольшим внутренним отступом */
+}
+.modules-right {
+    margin: 0 12px 0 8px;  /* Справа больше внешнего отступа */
+    padding: 0 6px;
+}
 
-#workspaces,
-#backlight,
-#battery,
-#pulseaudio,
+#custom-notification, 
+#custom-pacman,
+#tray,
+#custom-expand,
 #language,
-#clock {
-  padding: 6px 10px;
+#bluetooth,
+#network,
+#clock,
+#battery,
+#temperature {
+    margin-right: 10px;
+    transition: all 0.3s ease;
 }
-#workspaces {
-  padding-left: 20px;
+#custom-colorpicker,
+#cpu,
+#memory {
+    margin-right: 4px;
+    transition: all 0.3s ease;
 }
 
-#clock {
-  padding-right: 20px;
+#custom-notification:hover,
+#custom-pacman:hover,
+#custom-expand:hover,
+#language:hover,
+#bluetooth:hover,
+#network:hover,
+#clock:hover,
+#temperature:hover,
+#cpu:hover,
+#memory:hover {
+    color: @icon_hover;
 }
 
-/* workspaces */
+/* Батарея */
+#battery.charging {
+    color: @battery_charging;
+}
+#battery.full {
+    color: @battery_charged;
+}
+#battery.warning:not(.charging) {
+    color: @battery_medium;
+}
+#battery.critical:not(.charging) {
+    color: @battery_low;
+}
 
+/* Workspaces */
 #workspaces button {
-  font-size: 16px;
-  padding: 0 1px;
-  color: @red;
-  border: none;
+    font-size: 16px;
+    background: transparent;
 }
-
-#workspaces button.active {
-  color: @blue;
-}
-
-#workspaces button.urgent {
-  color: @red;
-}
-
 #workspaces button:hover {
-  background: none;
-  color: @blue;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    color: alpha(@workspace-inactive, 1.0);
+}
+#workspaces button.active {
+    color: @ws_active;
+}
+#workspaces button.active.empty {
+    color: @ws_active_empty;
+}
+#workspaces button:not(.active) {
+    color: @ws_inactive;
+}
+#workspaces button.empty:not(.active) {
+    color: @ws_inactive_empty;
+}
+#workspaces button:hover {
+    color: @ws_active_hover;
+}
+#workspaces button:not(.active):hover {
+    color: @ws_inactive_hover;
+}
+#workspaces button.empty:hover {
+    color: @ws_empty_hover;
 }
 
-/* battery */
 
-#battery.critical {
-  color: @red;
-}
 
-#battery.warning {
-  color: @yellow;
-}
 
-#battery.low {
-  color: @yellow;
-}
+
+
+

@@ -1,71 +1,154 @@
 {
-  "layer": "top", // don't dim in special workspaces
+    "layer": "top", // don't dim in special workspaces
+    "reload_style_on_change": true,
 
-  "modules-left": [
-    "hyprland/workspaces",
-  ],
+    "modules-left": [
+        "custom/notification",
+        "custom/pacman"
+    ],
 
-  "modules-center": [],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
 
-  "modules-right": [
-    "battery",
-    "pulseaudio",
-    "hyprland/language",
-    "clock",
-  ],
+    "modules-right": [
+        "tray",
+        "group/expand",
+        "hyprland/language",
+        "bluetooth",
+        "network",
+        "battery",
+        "clock"
+    ],
 
-  "hyprland/workspaces": {
-    "format": "●",
-  },
-
-  "battery": {
-    "format": "{icon} {capacity}%",
-    "tooltip-format": "{timeTo} | {power}w",
-    "format-icons": [ "󰂃", "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
-
-    "states": {
-      "critical": 10,
-      "warning": 25,
-      "low": 50,
-      "full": 100,
-    },
-  },
-
-  "pulseaudio": {
-    "format": "{format_source}{icon} {volume}%",
-    "format-muted": "{format_source}󰝟",
-
-    "format-source": "<span color='#${red}'>󰍬 on</span>  ",  // red
-    "format-source-muted": "",
-
-    "format-icons": {
-      "default": [ "󰕿", "󰖀", "󰕾", "󱄠" ],
+    "hyprland/workspaces": {
+        "format": "●",
+        "persistent-workspaces": {
+            "*": [ 1,2,3,4,5 ]
+        }
     },
 
-    "tooltip": false,
-    "on-click": "pavucontrol",
-    "on-click-right": "pamixer --default-source --toggle-mute",
-  },
+    "battery": {
+        "interval":30,
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% 󰂄 ",
+        "format-alt": "{time} {icon}",
+        "format-icons": [
+            "󰁻",
+            "󰁼",
+            "󰁾",
+            "󰂀",
+            "󰂂",
+            "󰁹"
+        ]
+    },
 
-  "hyprland/language": {
-    "format": "󰌌 {}",
-    "format-en": "us",
-    "format-ru": "ru",
-    "format-th": "th",
+    "pulseaudio": {
+        "format": "{format_source}{icon} {volume}%",
+        "format-muted": "{format_source}󰝟",
 
-    "keyboard-name": "keyd-virtual-keyboard",
+        "format-source": "<span color='#${red}'>󰍬 on</span>  ",  // red
+        "format-source-muted": "",
 
-    "on-click": "hyprctl keyword input:kb_layout us,ru",
-    "on-click-right": "hyprctl keyword input:kb_layout us,th",
-  },
+        "format-icons": {
+            "default": [ "󰕿", "󰖀", "󰕾", "󱄠" ]
+        },
 
-  "clock": {
-    "timezone": "Asia/Bangkok",
-    "format": "󰅐 {:%H:%M}",
+        "tooltip": false,
+        "on-click": "pavucontrol",
+        "on-click-right": "pamixer --default-source --toggle-mute"
+    },
 
-    "tooltip": true,
-    "tooltip-format": "{:%e %B, %A}",  // 2 April, Saturday
+    "hyprland/language": {
+        "format": "󰌌 {}",
+        "format-en": "us",
+        "format-ru": "ru"
+    },
 
-    "on-click": "footclient --hold when ci"
-  },
+    "clock": {
+        "timezone": "Europe/Moscow",
+        "format": "󰅐 {:%H:%M}",
+
+        "tooltip": true,
+        "tooltip-format": "{:%e %B, %A}"  // 2 April, Saturday
+    },
+
+    "network": {
+        "format-wifi": " ",
+        "format-ethernet":" ",
+        "format-disconnected": " ",
+        "tooltip-format-disconnected": "Error",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} 🖧 ",
+        "on-click": "kitty nmtui"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": " ",
+        "on-click": "swaync-client -t -sw",
+        "escape": true
+    },
+    "bluetooth": {
+        "format-on": "󰂯",
+        "format-off": "BT-off",
+        "format-disabled": "󰂲",
+        "format-connected-battery": "{device_battery_percentage}% 󰂯",
+        "format-alt": "{device_alias} 󰂯",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+        "on-click-right": "blueman-manager"
+    }, 
+    "custom/pacman": {
+        "format": "󰅢 {}",
+        "interval": 30,   
+        "exec": "checkupdates | wc -l",
+        "exec-if": "exit 0",
+        "on-click": "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
+        "signal": 8,
+        "tooltip": false
+    },
+    "custom/expand": {
+        "format": "",
+        "tooltip": false
+    },
+    "group/expand": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 600,
+            "transition-to-left": true,
+            "click-to-reveal": true
+        },
+        "modules": ["custom/expand", "custom/colorpicker","cpu","memory","temperature"]
+    },
+    "custom/colorpicker": {
+        "format": "{} ",
+        "return-type": "json",
+        "interval": "once",
+        "exec": "~/.config/waybar/scripts/colorpicker.sh -j",
+        "on-click": "~/.config/waybar/scripts/colorpicker.sh",
+        "signal": 1
+    },
+    "cpu": {
+        "format": "󰻠 ",
+        "tooltip": true
+    },
+    "memory": {
+        "format": " "
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": ""
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 10
+    }
 }

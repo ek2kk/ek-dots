@@ -1,89 +1,54 @@
-@define-color text     @color7;
-@define-color foreground #d0d0d1;
-@define-color background #1e1e1e;
-@define-color red #bb8284;
+/* Цветовые переменные (аналогичные Waybar) */
+@define-color bg_primary          rgba(20, 20, 20, 0.95);
+@define-color bg_secondary        rgba(30, 30, 30, 0.8);
+@define-color bg_selected         #4a5d7a;
+@define-color text_primary        #d8d8d9;
+@define-color text_secondary      #b5b5b6;
+@define-color text_selected       #d0d0d1;
+@define-color search_bg           rgba(26, 26, 30, 0.9);
+@define-color search_icon         #7d8fb3;
+@define-color placeholder         rgba(180, 185, 190, 0.7);
 
 * {
     all: unset;
-    font-family: 'MesloLGS Nerd Font', monospace;
-    font-size: 18px;
-    outline: none;
-    border: none;
-    text-shadow: none;
-    background-color: transparent;
+    font-family: 'MesloLGS Nerd Font';
+    font-size: 16px;
 }
 
 window {
-    padding: 20px;
-    border-radius: 0px;
-    background-color: alpha(@background, 0.7);
+    background-color: @bg_primary;
 }
-
-#outer-box,
-#inner-box,
-#scroll {
-    border: none;
-}
-
-#inner-box {
-    margin: 2px;
-    padding: 5px;
-}
-
 #scroll {
     padding: 10px;
     margin: 0;
 }
-
 #input {
-    margin: 20px;
     padding: 20px;
-    color: @foreground;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    background-color: alpha(@background, 0.2);
+    color: @text_primary;
+    background-color: @search_bg;
+    border-bottom: 1px solid @accent_border;
 }
-
 #input image {
-    color: @foreground;
+    color: @search_icon;
     padding-right: 10px;
 }
-
-#input *,
-#input:focus {
-    border: none;
-    outline: none;
-    border-radius: 10px;
-}
-
 #text {
     margin: 5px;
-    color: @foreground;
-    border: none;
-    outline: none;
+    color: @text_secondary;
 }
-
 #entry {
     margin: 5px;
     padding: 10px;
-    border: none;
-}
-
-#entry arrow {
-    color: @foreground;
-    border: none;
+    background-color: @bg_secondary;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
 }
 
 #entry:selected {
-    border-radius: 20px;
-    background-color: @foreground;
-    box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.03);
+    background-color: @bg_selected;
 }
 
 #entry:selected #text {
-    color: @background;
+    color: @text_selected;
 }
 
-#entry:drop(active) {
-    background-color: @red !important;
-}

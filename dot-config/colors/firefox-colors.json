@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "version": "1.0",
+  "name": "Custom Dark Theme",
+  "theme": {
+    "colors": {
+      "frame": "#141414",
+      "tab_background_text": "#b5b5b6",
+      "toolbar": "#141414",
+      "toolbar_text": "#d8d8d9",
+      "toolbar_field": "#1e1e1e",
+      "toolbar_field_text": "#d8d8d9",
+      "toolbar_field_border": "#3e3e3e",
+      "toolbar_top_separator": "#3e3e3e",
+      "toolbar_bottom_separator": "#3e3e3e",
+      "tab_line": "#4a5d7a",
+      "tab_selected": "#141414",
+      "popup": "#1e1e1e",
+      "popup_text": "#d8d8d9",
+      "popup_highlight": "#4a5d7a",
+      "popup_highlight_text": "#d8d8d9",
+      "ntp_background": "#141414",
+      "ntp_text": "#d8d8d9",
+      "button_background_hover": "#3e3e3e",
+      "button_background_active": "#4a5d7a",
+      "icons": "#d8d8d9",
+      "accentcolor": "#4a5d7a",
+      "textcolor": "#d8d8d9"
+    }
+  }
+}

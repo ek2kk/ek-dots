@@ -20,11 +20,12 @@ alias v="nvim"
 alias vim="nvim"
 alias wlogout="wlogout --buttons-per-row 2"
 alias cuvpn="netbird up --management-url https://vpn.labs.centraluniversity.ru:33073"
-alias l='eza --color=always --long --git --icons=always --group-directories-first'
+alias l='eza --color=always --long --git --icons=always --group-directories-first -la'
 alias ssh='kitty +kitten ssh'
 alias mambavpn='nmcli connection up mambavpn'
 alias gpu2hw='kitty +kitten ssh ekuznetsov@gpu2.hw.lan'
 alias gpu4hw='kitty +kitten ssh ekuznetsov@gpu4.hw.lan'
+alias gcs='$HOME/ek-dots/dot-config/colors/apply-colorscheme.sh'
 
 # git
 alias ga='git add'
